@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.practice_apps.ui.home.HomeViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:background="@color/purple_200"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.splash.HomeFragment">
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="200dp"-->
+<!--            android:onClick="@{()->viewModel.testText()}"-->
+<!--            android:text="@{viewModel.text}"-->
+<!--            />-->
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:onRefreshListener="@{() -> viewModel.getUsers()}"
+            android:refreshing="@{viewModel.loading}"
+           >
+<!-- -->
+<!--               -->
+            <androidx.recyclerview.widget.RecyclerView
+                app:viewModel="@{viewModel}"
+                app:bookmarks="@{viewModel.userItems}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+    </FrameLayout>
+</layout>
