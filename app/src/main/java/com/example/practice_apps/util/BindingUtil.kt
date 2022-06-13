@@ -27,9 +27,10 @@ fun SwipeRefreshLayout.refreshing(visible: Boolean) {
 }
 
 @BindingAdapter(value = ["bookmarks", "viewModel"])
-fun setBookmarks(view: RecyclerView, items: List<Users>, vm: HomeViewModel) {
+fun setBookmarks(view: RecyclerView, datas: List<Users>, vm: HomeViewModel) {
 //    val llm = LinearLayoutManager(this)
 //    llm.orientation = LinearLayoutManager.VERTICAL
+    val items = datas?: arrayListOf()
     view.adapter?.run {
         Log.e("setBookmarks", "setBookmarks: aaaaaaaaa")
         if (this is HomeAdapter) this.submitList(items)
