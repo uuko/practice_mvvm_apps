@@ -18,7 +18,8 @@ class APIModule {
 
     @Provides
     @Singleton
-    fun provideUserApi( retrofit: Retrofit): APIService {
+    @Named("UserRetrofit")
+    fun provideUserApi(   @Named("UserApi") retrofit: Retrofit): APIService {
         return retrofit.create(APIService::class.java)
     }
 
@@ -28,7 +29,7 @@ class APIModule {
     fun provideUserRetrofit(
         @Named("UserApiUrl") url: String,
         @Named("UserApiClient") okHttpClient: OkHttpClient
-    ): Retrofit? {
+    ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(url)
             .client(okHttpClient)

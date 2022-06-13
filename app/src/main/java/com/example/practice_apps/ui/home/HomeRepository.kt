@@ -18,11 +18,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+import javax.inject.Named
 import kotlin.random.Random.Default.nextInt
 
 
 class HomeRepository @Inject constructor(
-
+    @Named("UserRetrofit")
+    val apiService: APIService
 ) {
     private val compositeDisposable = CompositeDisposable()
     private val userliveData = MutableLiveData<Status<List<Users>>>(

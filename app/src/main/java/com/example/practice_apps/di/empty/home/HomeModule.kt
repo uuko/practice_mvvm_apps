@@ -13,5 +13,5 @@ object HomeModule {
     @Provides
     fun provideHomeRepository(
         api: APIService
-    ) = HomeRepository()
+    ) = HomeRepository(api)
 }
