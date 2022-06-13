@@ -35,4 +35,11 @@ constructor(private val repository: HomeRepository) : ViewModel() {
     }
 
 
+    override fun onCleared() {
+
+        repository.disposeComposite()
+        super.onCleared()
+    }
+
+
 }
